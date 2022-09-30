@@ -1,27 +1,102 @@
 <template>
-  <div class="my-20">
-    <p class="capitalize cursor-pointer hover:text-deep-brown duration-300">
-      go back
-    </p>
-  </div>
-  <div class="flex items-center gap-20">
-    <div class="flex-1 bg-grey p-10 py-20 rounded-sm">
-      <img
-        src="./../../assets/img/earphone-product-1.png"
-        alt=""
-        class="mx-auto relative z-10"
-      />
-      <div
-        class="w-40 h-6 rounded-full bg-black mx-auto blur-xl -mt-6 opacity-80"
-      ></div>
-    </div>
-    <div class="flex-1">
-      <h1 class="w-72 font-bold text-5xl">XX99 Mark I Headphones</h1>
-      <p class="my-12 opacity-60">
-        As the gold standard for headphones, the classic XX99 Mark I offers
-        detailed and accurate audio reproduction for audiophiles, mixing
-        engineers, and music aficionados alike in studios and on the go.
+  <div class="px-4 md:px-0">
+    <div class="my-12 md:my-20">
+      <p
+        class="capitalize cursor-pointer hover:text-deep-brown duration-300"
+        @click="goBack"
+      >
+        go back
       </p>
+    </div>
+    <div class="flex flex-col md:flex-row items-center gap-20">
+      <div class="flex-1 bg-grey p-10 py-20 rounded-md w-full">
+        <img
+          :src="require(`./../../assets/img/${product.img}.png`)"
+          alt=""
+          class="mx-auto relative z-10"
+        />
+        <div
+          class="
+            w-40
+            h-6
+            rounded-full
+            bg-black
+            mx-auto
+            blur-xl
+            -mt-6
+            opacity-80
+          "
+        ></div>
+      </div>
+      <div class="flex-1">
+        <h1 class="w-[20rem] font-bold text-3xl md:text-5xl uppercase">
+          {{ product.title }}
+        </h1>
+        <p class="my-6 md:my-12 opacity-60">
+          {{ product.description }}
+        </p>
+        <h2 class="my-12 text-lg font-semibold">
+          $ {{ product.priceInDollars.toFixed(2) }}
+        </h2>
+        <div class="flex items-center gap-4 md:gap-8">
+          <div
+            class="
+              flex
+              items-center
+              gap-6
+              bg-grey
+              py-2
+              md:py-4
+              px-4
+              md:px-6
+              font-bold
+            "
+          >
+            <button
+              class="bg-transparent outline-none text-lg text-gray-500"
+              @click="decreaseQuantity"
+            >
+              -
+            </button>
+            <p class="min-w-[2rem] text-center">{{ quantity }}</p>
+            <button
+              class="bg-transparent outline-none text-lg text-gray-500"
+              @click="increaseQuantity"
+            >
+              +
+            </button>
+          </div>
+          <base-button :brown="true">add to cart</base-button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ["product"],
+  data() {
+    return {
+      quantity: 1,
+    };
+  },
+  methods: {
+    increaseQuantity() {
+      this.quantity++;
+    },
+    goBack() {
+      if (window.history.back()) {
+        history.back;
+      } else {
+        this.$router.replace("/");
+      }
+    },
+    decreaseQuantity() {
+      if (this.quantity !== 0) {
+        this.quantity--;
+      }
+    },
+  },
+};
+</script>

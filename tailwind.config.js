@@ -15,7 +15,7 @@ module.exports = {
       Manrope: ["Manrope", "sans-serif"],
     },
     backgroundSize: {
-      "100": "100%",
+      "100": "100% 100%",
       "110": "110%",
       "125": "125%",
       "150": "150%",

@@ -26,7 +26,8 @@ const routes = [
     path: "/headphones/:id",
     alias: ["/speakers/:id", "/earphones/:id"],
     name: "headphone",
-    component: () => import('./../views/ProductView.vue')
+    component: () => import('./../views/ProductView.vue'),
+    props: true
   },
 
 ];
