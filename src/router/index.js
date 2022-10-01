@@ -23,6 +23,11 @@ const routes = [
     component: () => import('./../views/EarphoneView.vue')
   },
   {
+    path: '/checkout-cart',
+    name: 'checkout',
+    component: () => import('./../views/CheckoutView.vue')
+  },
+  {
     path: "/headphones/:id",
     alias: ["/speakers/:id", "/earphones/:id"],
     name: "headphone",

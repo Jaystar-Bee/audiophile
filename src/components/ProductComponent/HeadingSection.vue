@@ -3,7 +3,7 @@
     <div class="my-12 md:my-20">
       <p
         class="capitalize cursor-pointer hover:text-deep-brown duration-300"
-        @click="goBack"
+        @click="$router.back()"
       >
         go back
       </p>
@@ -85,15 +85,8 @@ export default {
     increaseQuantity() {
       this.quantity++;
     },
-    goBack() {
-      if (window.history.back()) {
-        history.back;
-      } else {
-        this.$router.replace("/");
-      }
-    },
     decreaseQuantity() {
-      if (this.quantity !== 0) {
+      if (this.quantity !== 1) {
         this.quantity--;
       }
     },

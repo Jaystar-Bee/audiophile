@@ -14,7 +14,12 @@
   >
     <div class="flex items-center">
       <div class="md:hidden mr-10">
-        <img src="./../../assets/img/breadcrumb.png" alt="" />
+        <img
+          src="./../../assets/img/breadcrumb.png"
+          alt=""
+          class="cursor-pointer"
+          @click="toggleNav"
+        />
       </div>
       <router-link to="/"
         ><h2 class="font-black text-2xl">audiophile</h2></router-link
@@ -37,7 +42,65 @@
       </ul>
     </div>
     <div>
-      <img src="./../../assets/img/cart.png" alt="" />
+      <img src="./../../assets/img/cart.png" alt="" @click="toggleCart" />
     </div>
   </nav>
+  <teleport to="body">
+    <ModalSlot @close="closeNav" v-if="navIsVisible" :nav="true">
+      <template #nav>
+        <div>
+          <SlidesSection @close="closeNav"></SlidesSection>
+        </div>
+      </template>
+    </ModalSlot>
+
+    <ModalSlot @close="closeCart" v-if="cartIsVisible" :cart="true">
+      <template #cart>
+        <TheCart></TheCart>
+      </template>
+    </ModalSlot>
+  </teleport>
 </template>
+<script>
+import ModalSlot from "./modalSlot";
+import SlidesSection from "./SlidesSection.vue";
+import TheCart from "./TheCart.vue";
+export default {
+  components: {
+    ModalSlot,
+    SlidesSection,
+    TheCart,
+  },
+  data() {
+    return {
+      navIsVisible: false,
+      cartIsVisible: false,
+    };
+  },
+  computed: {
+    navAndCart() {
+      return `${this.navIsVisible}|${this.cartIsVisible}`;
+    },
+  },
+  methods: {
+    closeNav() {
+      this.navIsVisible = false;
+    },
+    closeCart() {
+      this.cartIsVisible = false;
+    },
+    toggleNav() {
+      if (this.cartIsVisible) {
+        this.cartIsVisible = false;
+      }
+      this.navIsVisible = !this.navIsVisible;
+    },
+    toggleCart() {
+      if (this.navIsVisible) {
+        this.navIsVisible = false;
+      }
+      this.cartIsVisible = !this.cartIsVisible;
+    },
+  },
+};
+</script>

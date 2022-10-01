@@ -17,6 +17,7 @@
       :to="slide.href"
       :key="slide.id"
       class="flex-1 min-w-min slide mx-auto"
+      @click="$emit('close')"
     >
       <div
         class="
