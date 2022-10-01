@@ -65,7 +65,9 @@
       </div>
 
       <div class="mt-8">
-        <base-button :brown="true">See product</base-button>
+        <router-link to="/headphones/1">
+          <base-button :brown="true">See product</base-button>
+        </router-link>
       </div>
     </div>
     <div class="flex-1 hidden md:block">

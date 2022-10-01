@@ -37,7 +37,9 @@
           YX1 EARPHONES
         </h2>
         <div>
-          <base-button :outline="true">See Product</base-button>
+          <router-link to="/earphones/1">
+            <base-button :outline="true">See Product</base-button>
+          </router-link>
         </div>
       </div>
     </div>

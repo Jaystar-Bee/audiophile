@@ -10,7 +10,7 @@
       <GallerySection :images="product.gallery"></GallerySection>
     </section>
     <section class="my-32">
-      <ExtraSection></ExtraSection>
+      <ExtraSection :extra="product.mayLike"></ExtraSection>
     </section>
 
     <section class="my-40">
@@ -43,13 +43,18 @@ export default {
       product: null,
     };
   },
+  methods: {
+    getProduct() {
+      const arr = this.$route.path.split("/");
+      this.$store.dispatch("products/getProduct", {
+        type: arr[1],
+        id: this.id,
+      });
+      this.product = this.$store.getters["products/product"];
+    },
+  },
   created() {
-    const arr = this.$route.path.split("/");
-    this.$store.dispatch("products/getProduct", {
-      type: arr[1],
-      id: this.id,
-    });
-    this.product = this.$store.getters["products/product"];
+    this.getProduct();
   },
 };
 </script>

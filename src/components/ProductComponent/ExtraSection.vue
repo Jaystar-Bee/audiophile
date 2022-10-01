@@ -11,37 +11,26 @@
       gap-10
     "
   >
-    <div class="flex-1 min-w-fit">
+    <div
+      v-for="product in extra"
+      :key="product.id"
+      :product="product"
+      class="flex-1 min-w-fit"
+    >
       <div class="w-full p-10 bg-grey rounded-md">
         <img
-          src="./../../assets/img/headphone-product-1.png"
+          :src="require(`./../../assets/img/${product.img}.png`)"
           alt=""
           class="h-[12rem] mx-auto"
         />
       </div>
       <div class="mt-8 text-center">
-        <h2 class="uppercase font-bold text-xl mb-8">XX99 MARK I</h2>
-        <base-button :brown="true">see product</base-button>
+        <h2 class="uppercase font-bold text-xl mb-8">{{ product.title }}</h2>
+        <router-link :to="`${product.realLink}`">
+          <base-button :brown="true">see product</base-button>
+        </router-link>
       </div>
     </div>
-    <!-- <div class="flex-1 min-w-fit">
-      <div class="w-full p-10 bg-grey rounded-md">
-        <img
-          src="./../../assets/img/headphone-product-3.png"
-          alt=""
-          class="h-[12rem] mx-auto"
-        />
-      </div>
-    </div>
-    <div class="flex-1 min-w-fit">
-      <div class="w-full p-10 bg-grey rounded-md">
-        <img
-          src="./../../assets/img/speaker-product-1.png"
-          alt=""
-          class="h-[12rem] mx-auto"
-        />
-      </div>
-    </div> -->
   </div>
 </template>
 

@@ -42,7 +42,9 @@
         >
           {{ product.description }}
         </p>
-        <base-button :brown="true">see product</base-button>
+        <router-link :to="`${product.section}/${product.id}`">
+          <base-button :brown="true">see product</base-button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -50,6 +52,6 @@
 
 <script>
 export default {
-props: ['products']
+  props: ["products"],
 };
 </script>

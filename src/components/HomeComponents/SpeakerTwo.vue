@@ -17,9 +17,11 @@
         ZX7 SPEAKER
       </h2>
       <div>
-        <base-button :outline="true"
-          ><p class="text-sm sm:text-base">see product</p>
-        </base-button>
+        <router-link to="/speakers/2">
+          <base-button :outline="true"
+            ><p class="text-sm sm:text-base">see product</p>
+          </base-button>
+        </router-link>
       </div>
     </div>
   </div>

@@ -61,7 +61,9 @@
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
+        <router-link to="/speakers/1">
         <base-button class="mb-10 md:mb-0">see product</base-button>
+        </router-link>
       </div>
     </div>
   </div>

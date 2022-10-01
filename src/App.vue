@@ -3,7 +3,7 @@
     <header class="bg-black">
       <the-header></the-header>
     </header>
-    <router-view />
+    <router-view :key="$route.fullPath" />
     <TheFooter></TheFooter>
   </div>
 </template>
