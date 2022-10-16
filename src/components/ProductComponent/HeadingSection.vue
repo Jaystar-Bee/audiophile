@@ -66,7 +66,9 @@
               +
             </button>
           </div>
-          <base-button :brown="true">add to cart</base-button>
+          <base-button :brown="true" @click="addToCart"
+            >add to cart</base-button
+          >
         </div>
       </div>
     </div>
@@ -89,6 +91,15 @@ export default {
       if (this.quantity !== 1) {
         this.quantity--;
       }
+    },
+    addToCart() {
+      const total = this.product.priceInDollars * this.quantity;
+      const newCart = {
+        ...this.product,
+        quantity: this.quantity,
+        total,
+      };
+      this.$store.dispatch("addNewItem", newCart);
     },
   },
 };

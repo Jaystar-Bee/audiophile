@@ -56,7 +56,7 @@
 
     <ModalSlot @close="closeCart" v-if="cartIsVisible" :cart="true">
       <template #cart>
-        <TheCart></TheCart>
+        <TheCart @close="closeCart"></TheCart>
       </template>
     </ModalSlot>
   </teleport>

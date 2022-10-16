@@ -1,8 +1,18 @@
 <template>
-  <div class="min-w-[20rem]">
+  <div v-if="products.length == 0" class="text-center">
+    <h1 class="font-bold text-xl mb-8">Cart is Empty</h1>
+    <p>Check out each products and start adding to cart</p>
+    <p class="text-deep-brown">Happing Shopping !!</p>
+  </div>
+  <div v-else class="sm:min-w-[20rem]">
     <div class="flex justify-between items-center">
-      <h2 class="font-semibold text-lg">Cart <span>( 3 )</span></h2>
-      <p class="opacity-60 cursor-pointer duration-200 hover:text-deep-brown">
+      <h2 class="font-semibold text-lg">
+        Cart <span>( {{ products.length }} )</span>
+      </h2>
+      <p
+        class="opacity-60 cursor-pointer duration-200 hover:text-deep-brown"
+        @click="deleteCart"
+      >
         Remove all
       </p>
     </div>
@@ -10,80 +20,60 @@
     <!---Cart details--->
     <div class="mt-16">
       <!---One detail--->
-      <div class="flex items-center justify-between mb-10">
+      <div
+        v-for="product in products"
+        :key="product.title"
+        :product="product"
+        class="flex space-x-6 sm:space-x-4 items-center justify-between mb-10"
+      >
         <!---Images and the details-->
         <div class="flex items-center gap-4">
           <div class="p-4 rounded-md bg-grey">
             <img
-              src="./../../assets/img/earphone-product-1.png"
+              :src="require(`./../../assets/img/${product.img}.png`)"
               alt=""
               class="w-8"
             />
           </div>
           <div>
-            <h2 class="uppercase font-bold">XX99 MK II</h2>
-            <p class="text-sm opacity-60">$ 2990</p>
+            <h2 class="uppercase font-bold">
+              {{
+                product.title.length > 12
+                  ? product.title.slice(0, 12) + "&hellip;"
+                  : product.title
+              }}
+            </h2>
+            <p class="text-sm opacity-60">$ {{ product.priceInDollars }}</p>
           </div>
         </div>
         <!----Funtions----->
         <div class="flex items-center gap-2 bg-grey py-2 px-4 font-bold">
           <button
             class="bg-transparent outline-none text-lg text-gray-500"
-            @click="decreaseQuantity"
+            @click="decreaseQuantity(product.title, product.quantity)"
           >
             -
           </button>
-          <p class="min-w-[1rem] text-center">{{ quantity }}</p>
+          <p class="min-w-[1rem] text-center">{{ product.quantity }}</p>
           <button
             class="bg-transparent outline-none text-lg text-gray-500"
-            @click="increaseQuantity"
+            @click="increaseQuantity(product.title)"
           >
             +
           </button>
         </div>
       </div>
-      <!---One detail--->
-      <!-- <div class="flex items-center justify-between"> -->
-      <!---Images and the details-->
-      <!-- <div class="flex items-center gap-4">
-          <div class="p-4 rounded-md bg-grey">
-            <img
-              src="./../../assets/img/earphone-product-1.png"
-              alt=""
-              class="w-8"
-            />
-          </div>
-          <div>
-            <h2 class="uppercase font-bold">XX99 MK II</h2>
-            <p class="text-sm opacity-60">$ 2990</p>
-          </div>
-        </div>-->
-      <!----Funtions----->
-      <!--<div class="flex items-center gap-2 bg-grey py-2 px-4 font-bold">
-          <button
-            class="bg-transparent outline-none text-lg text-gray-500"
-            @click="decreaseQuantity"
-          >
-            -
-          </button>
-          <p class="min-w-[1rem] text-center">{{ quantity }}</p>
-          <button
-            class="bg-transparent outline-none text-lg text-gray-500"
-            @click="increaseQuantity"
-          >
-            +
-          </button>
-        </div>
-      </div> -->
     </div>
     <!--Total-->
     <div class="flex justify-between items-center my-8">
       <p class="uppercase opacity-60 text-lg">total</p>
-      <p class="font-bold">$ 2,990</p>
+      <p class="font-bold">$ {{ total }}</p>
     </div>
-    <base-button class="uppercase mx-auto w-full" :brown="true"
-      >checkout</base-button
-    >
+    <router-link to="/checkout-cart" @click="$emit('close')">
+      <base-button class="uppercase mx-auto w-full" :brown="true" type="button"
+        >checkout</base-button
+      >
+    </router-link>
   </div>
 </template>
 
@@ -94,14 +84,28 @@ export default {
       quantity: 1,
     };
   },
-  methods: {
-    increaseQuantity() {
-      this.quantity++;
+  computed: {
+    products() {
+      return this.$store.getters.cart;
     },
-    decreaseQuantity() {
-      if (this.quantity !== 1) {
-        this.quantity--;
+    total() {
+      return this.$store.getters.total;
+    },
+  },
+  methods: {
+    increaseQuantity(title) {
+      this.$store.dispatch("increaseProduct", { title });
+    },
+    decreaseQuantity(title, quantity) {
+      if (quantity === 1) {
+        // this.quantity--;
+        this.$store.dispatch("deleteProduct", { title });
+        return;
       }
+      this.$store.dispatch("decreaseProduct", { title });
+    },
+    deleteCart() {
+      this.$store.dispatch("deleteCart");
     },
   },
 };
