@@ -261,9 +261,7 @@
                 placeholder="New York"
               />
             </div>
-            <!---City ends--->
           </div>
-          <!---First step ends--->
           <!---Second step --->
           <!---Country-->
           <div class="mt-6 sm:mr-4">
@@ -303,8 +301,6 @@
             </div>
           </div>
         </div>
-        <!---Shipping Info end --->
-
         <!--Payment Details starts--->
         <div class="mt-14">
           <h3 class="uppercase text-deep-brown mb-6 font-semibold">
@@ -370,8 +366,6 @@
             </div>
           </div>
         </div>
-        <!----Payment Details Ends--->
-
         <!---E money Details--->
         <keep-alive>
           <component
@@ -403,7 +397,6 @@
         Summary
       </h1>
       <div class="my-6">
-        <!---All Products-->
         <div>
           <!---Single Product--->
           <checkout-product
@@ -411,10 +404,7 @@
             :key="product.id"
             :product="product"
           ></checkout-product>
-
-          <!---Single Product ends---->
         </div>
-        <!----All Products ends--->
         <!----Budget Calculation--->
         <budget-amount
           :cartTotal="cartTotal"
