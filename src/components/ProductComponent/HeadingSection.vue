@@ -17,7 +17,7 @@
         />
         <div
           class="
-            w-20
+            w-32
             sm:w-40
             h-6
             rounded-full
@@ -30,16 +30,36 @@
         ></div>
       </div>
       <div class="flex-1">
-        <h1 class="w-[20rem] font-bold text-3xl md:text-5xl uppercase">
+        <h1
+          class="
+            w-[20rem]
+            font-bold
+            text-3xl
+            md:text-5xl
+            uppercase
+            pl-3
+            sm:pl-0
+          "
+        >
           {{ product.title }}
         </h1>
-        <p class="my-6 md:my-12 opacity-60">
+        <p class="my-6 md:my-12 opacity-60 w-11/12 pl-3 sm:pl-0">
           {{ product.description }}
         </p>
-        <h2 class="my-12 text-lg font-semibold">
+        <h2 class="my-12 text-lg font-semibold pl-3 sm:pl-0">
           $ {{ product.priceInDollars.toFixed(2) }}
         </h2>
-        <div class="flex items-center gap-4 md:gap-8">
+        <div
+          class="
+            flex
+            items-center
+            gap-4
+            md:gap-8
+            w-11/12
+            mx-auto
+            sm:w-auto sm:mx-0
+          "
+        >
           <div
             class="
               flex
