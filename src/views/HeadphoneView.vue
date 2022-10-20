@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="w-full">
     <header class="bg-black py-28 lg:py-40 text-white">
       <h1
         class="text-3xl md:text-4xl lg:text-6xl font-bold uppercase text-center"

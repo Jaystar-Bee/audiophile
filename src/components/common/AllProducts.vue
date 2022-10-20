@@ -1,10 +1,11 @@
 <template>
   <div
+    data-test="products"
     v-for="(product, index) in products"
     :key="product.id"
     :index="index + 1"
     :product="product"
-    class="mt-32"
+    class="mt-32 w-full"
   >
     <div
       class="flex flex-col items-center gap-20"
@@ -16,7 +17,9 @@
           alt=""
           class="mx-auto relative z-20"
         />
-        <div class="w-52 h-6 blur-2xl bg-black mx-auto -mt-6 mb-10"></div>
+        <div
+          class="w-32 sm:w-52 h-6 blur-2xl bg-black mx-auto -mt-6 mb-10"
+        ></div>
       </div>
       <div class="flex-1 text-center md:text-left">
         <h4
@@ -33,7 +36,7 @@
             leading-7
             opacity-50
             tracking-wide
-            mb-12
+            pb-12
             w-5/6
             md:w-auto
             mx-auto

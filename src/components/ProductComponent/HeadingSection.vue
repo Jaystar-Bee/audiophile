@@ -17,7 +17,8 @@
         />
         <div
           class="
-            w-40
+            w-20
+            sm:w-40
             h-6
             rounded-full
             bg-black

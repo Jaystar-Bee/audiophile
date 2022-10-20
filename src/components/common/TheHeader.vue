@@ -9,7 +9,8 @@
       mx-auto
       border-b border-white border-opacity-20
       text-white
-      px-1
+      px-5
+      sm:px-1
     "
   >
     <div class="flex items-center">
@@ -22,7 +23,7 @@
         />
       </div>
       <router-link to="/"
-        ><h2 class="font-black text-2xl">audiophile</h2></router-link
+        ><h2 class="font-black text-xl sm:text-2xl">audiophile</h2></router-link
       >
     </div>
     <div class="hidden md:block">
