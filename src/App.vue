@@ -1,13 +1,13 @@
 <template>
-  <!-- <div class="font-Manrope"> -->
-  <header class="bg-black sticky top-0 z-50">
-    <the-header></the-header>
-  </header>
-  <div class="bg-light-grey">
-    <router-view :key="$route.fullPath" />
+  <div class="font-Manrope">
+    <header class="bg-black sticky top-0 z-50">
+      <the-header></the-header>
+    </header>
+    <div class="bg-light-grey">
+      <router-view :key="$route.fullPath" />
+    </div>
+    <TheFooter></TheFooter>
   </div>
-  <TheFooter></TheFooter>
-  <!-- </div> -->
 </template>
 
 <script>
