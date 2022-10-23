@@ -20,6 +20,9 @@ export default {
     TheFooter,
     ModalSlot,
   },
+  mounted() {
+    this.$store.dispatch("getFromLocal");
+  },
 };
 </script>
 

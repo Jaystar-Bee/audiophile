@@ -49,14 +49,14 @@
         <!----Funtions----->
         <div class="flex items-center gap-2 bg-grey py-2 px-4 font-bold">
           <button
-            class="bg-transparent outline-none text-lg text-gray-500"
+            class="bg-transparent outline-none border-0 text-lg text-gray-500"
             @click="decreaseQuantity(product.title, product.quantity)"
           >
             -
           </button>
           <p class="min-w-[1rem] text-center">{{ product.quantity }}</p>
           <button
-            class="bg-transparent outline-none text-lg text-gray-500"
+            class="bg-transparent outline-none border-0 text-lg text-gray-500"
             @click="increaseQuantity(product.title)"
           >
             +

@@ -43,7 +43,7 @@
         >
           {{ product.title }}
         </h1>
-        <p class="my-6 md:my-12 opacity-60 w-11/12 pl-3 sm:pl-0">
+        <p class="my-6 md:my-12 opacity-60 w-11/12 pl-3 pr-2 sm:pr-0 sm:pl-0">
           {{ product.description }}
         </p>
         <h2 class="my-12 text-lg font-semibold pl-3 sm:pl-0">
@@ -74,14 +74,14 @@
             "
           >
             <button
-              class="bg-transparent outline-none text-lg text-gray-500"
+              class="bg-transparent outline-none border-0 text-lg text-gray-500"
               @click="decreaseQuantity"
             >
               -
             </button>
             <p class="min-w-[2rem] text-center">{{ quantity }}</p>
             <button
-              class="bg-transparent outline-none text-lg text-gray-500"
+              class="bg-transparent outline-none border-0 text-lg text-gray-500"
               @click="increaseQuantity"
             >
               +

@@ -130,24 +130,42 @@ export default createStore({
     },
     deleteCart(state) {
       state.cart.items = []
+    },
+    setCart(state, payload) {
+      state.cart.items = payload
     }
   },
   actions: {
     addNewItem(context, payload) {
       context.commit('addToCart', payload)
+      context.dispatch("addToLocal")
     },
     increaseProduct(context, payload) {
       context.commit('increment', payload)
+      context.dispatch("addToLocal")
     },
     decreaseProduct(context, payload) {
       context.commit('decrement', payload)
+      context.dispatch("addToLocal")
     },
     deleteProduct(context, payload) {
       context.commit('deleteItem', payload)
+      context.dispatch("addToLocal")
     },
     deleteCart(context) {
       context.commit("deleteCart")
+      context.dispatch("addToLocal")
     },
+    addToLocal(context) {
+      const cart = JSON.stringify(context.getters.cart);
+      localStorage.setItem("cart", cart)
+
+    },
+    getFromLocal(context) {
+      const cart = localStorage.getItem("cart")
+      if (!cart) return;
+      context.commit("setCart", JSON.parse(cart))
+    }
 
   },
   modules: {
