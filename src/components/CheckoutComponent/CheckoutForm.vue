@@ -26,7 +26,7 @@
           Billing Details
         </h3>
         <!----Frist step--->
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4 flex-wrap">
+        <div class="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 flex-wrap">
           <!---Name-->
           <div class="flex-1">
             <div class="flex justify-between">
@@ -187,7 +187,7 @@
             class="
               flex flex-col
               sm:flex-row sm:items-center
-              gap-4
+              space-y-4 sm:space-y-0 sm:space-x-4
               flex-wrap
               mt-6
             "
