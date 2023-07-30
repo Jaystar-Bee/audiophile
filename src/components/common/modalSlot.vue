@@ -1,7 +1,7 @@
 <template>
   <div
     @click="$emit('close')"
-    class="fixed top-0 h-full w-full bg-black opacity-70 z-20 backdrop-blur-md"
+    class="fixed top-0 h-full w-full bg-black opacity-70 z-30 backdrop-blur-md"
   ></div>
   <div
     v-if="cart"
@@ -18,10 +18,11 @@
       w-full
       bg-white
       rounded-b-lg
-      py-40
+      py-32
+      sm:py-40
       px-10
       z-30
-      overflow-y-scroll
+      overflow-y-auto
     "
   >
     <slot name="nav"></slot>

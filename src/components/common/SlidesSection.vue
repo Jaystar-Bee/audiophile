@@ -3,7 +3,8 @@
     class="
       flex
       items-center
-      gap-32
+      gap-28
+      sm:gap-32
       justify-center
       container
       mx-auto

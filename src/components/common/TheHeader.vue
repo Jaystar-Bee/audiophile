@@ -1,18 +1,18 @@
 <template>
   <nav
-    class="
+  class="border-b border-white border-opacity-20"
+  ><div     class="
       flex
       items-center
       justify-between
       py-6
       container
       mx-auto
-      border-b border-white border-opacity-20
+      
       text-white
       px-5
       sm:px-1
-    "
-  >
+    ">
     <div class="flex items-center">
       <div class="md:hidden mr-10">
         <img
@@ -45,9 +45,10 @@
     <div>
       <img src="./../../assets/img/cart.png" alt="" @click="toggleCart" />
     </div>
+  </div>
   </nav>
   <teleport to="body">
-    <ModalSlot @close="closeNav" v-if="navIsVisible" :nav="true">
+    <ModalSlot @close="closeNav" v-if="navIsVisible" :nav="true" class="md:hidden">
       <template #nav>
         <div>
           <SlidesSection @close="closeNav"></SlidesSection>
