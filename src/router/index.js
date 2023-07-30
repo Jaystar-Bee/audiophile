@@ -33,7 +33,12 @@ const routes = [
     name: "headphone",
     component: () => import('./../views/ProductView.vue'),
     props: true
-  },
+  },{
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    component: () => import('./../views/NotFoundView.vue')
+    
+  }
 
 ];
 
